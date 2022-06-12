@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="leaderboard-style.css">
+    <title>Special Assignment</title>
+</head>
+<body>
+  <h1>Very Special Table</h1>
+  <table class="stylish-table">
+    <thead>
+      <tr>
+        <!-- adding &#9650 adds arrow that is later used for descending and ascending is &#9660 -->
+        <th data-column="number" data-order="desc">Number &#9650</th>
+        <th data-column="name" data-order="desc">Name &#9650</th>
+        <th data-column="points" data-order="desc">Points &#9650</th>
+      </tr>
+    </thead>
+
+    <tbody id="myTable">
+        
+    </tbody>
+</table>
+
+<!-- The list of entries of the table -->
+<script>
+	var myArray = [
+	{
+	  "number": 17,
+      "name": "Mickey Mouse",
+      "points": 10
+    },
+    {
+	  "number": 3,
+      "name": "Donald Duck",
+      "points": 34
+    },
+    {
+	  "number": 9,
+      "name": "Rick Roll",
+      "points": 15
+    },
+    {
+	  "number": 15,
+      "name": "Winnie the Pooh",
+      "points": 32
+    },
+    {
+	  "number": 1,
+      "name": "Harley Quinn",
+      "points": 13
+    },
+    {
+	  "number": 8,
+      "name": "Johnny Bravo",
+      "points": 7
+    },
+    {
+	  "number": 20,
+      "name": "Cristiano Ronaldo",
+      "points": 64
+    },
+    {
+	  "number": 2,
+      "name": "Weighted Companion Cube",
+      "points": 115
+    },
+    {
+	  "number": 19,
+      "name": "The Huddle",
+      "points": 34
+    },
+    {
+	  "number": 4,
+      "name": "Peter Pan",
+      "points": 29
+    },
+    {
+	  "number": 18,
+      "name": "Dirk Gentley",
+      "points": 28
+    },
+    {
+	  "number": 14,
+      "name": "Arthur Ford",
+      "points": 61
+    },
+    {
+	  "number": 5,
+      "name": "Towelie",
+      "points": 111
+    },
+    {
+	  "number": 16,
+      "name": "Eric Cartman",
+      "points": 35
+    },
+    {
+	  "number": 12,
+      "name": "Peter Griffith",
+      "points": 89
+    },
+    {
+	  "number": 13,
+      "name": "Stewie Griffith",
+      "points": 5
+    },
+    {
+	  "number": 11,
+      "name": "Invader Zim",
+      "points": 39
+    },
+    {
+	  "number": 7,
+      "name": "Girrrrr",
+      "points": 48
+    },
+    {
+	  "number": 10,
+      "name": "Woody",
+      "points": 44
+    },
+    {
+	  "number": 6,
+      "name": "Todd Sweeney",
+      "points": 26
+    }
+	]
+// Function to order the columns in descending or ascending order. All start desc.
+	$('th').on('click', function(){
+		var column = $(this).data('column')
+		var order = $(this).data('order')
+		var text = $(this).html()
+		text = text.substring(0, text.length - 1)
+
+		if(order == 'desc'){
+			$(this).data('order', "asc")
+			myArray = myArray.sort((a,b) => a[column] > b[column] ? 1 : -1)
+			text += '&#9660'
+
+		}else{
+			$(this).data('order', "desc")
+			myArray = myArray.sort((a,b) => a[column] < b[column] ? 1 : -1)
+			text += '&#9650'
+
+		}
+		$(this).html(text)
+		buildTable(myArray)
+	})
+
+	buildTable(myArray)
+//  This function gets every ellement in the array and puts it in a sorted table.
+	function buildTable(data){
+		var table = document.getElementById('myTable')
+		table.innerHTML = ''
+		for (var i = 0; i < data.length; i++){
+			var row = `<tr>
+							<td>${data[i].number}</td>
+							<td>${data[i].name}</td>
+							<td>${data[i].points}</td>
+					  </tr>`
+			table.innerHTML += row
+
+
+		}
+	}
+
+</script>
+
+<!-- Firebase connection -->
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-app.js";
+  import { getAnalytics, logEvent } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-analytics.js";
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyDZdnl5h-nyuNi7iu-85ArJC5U0A4ZCOX8",
+    authDomain: "very-fisrt-project.firebaseapp.com",
+    projectId: "very-fisrt-project",
+    storageBucket: "very-fisrt-project.appspot.com",
+    messagingSenderId: "459891858730",
+    appId: "1:459891858730:web:c0aba1737987eade291253",
+    measurementId: "G-TD99JPSLW8"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  logEvent(analytics, 'notification_received');
+</script>
+</body>
+</html>
+

@@ -1,0 +1,44 @@
+body{
+    margin: 0;
+    font-family: Helvetica, sans-serif;
+    background-image: url(./fontys.jpg); 
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+h1{
+    text-align: center;
+}
+
+th{ 
+    color: #000;
+}
+.stylish-table {
+    border-collapse: collapse;
+    font-size: 0.9em;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    width: 80%;
+    height: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+}
+.stylish-table thead tr {
+    background-color: #fff;
+    color: #000;
+    text-align: left;
+}
+.stylish-table th,
+.stylish-table td {
+    padding: 12px 15px;
+}
+.stylish-table tbody tr:nth-of-type(even) {
+    background-color: #e4e2e2;
+}
+table, td {
+    border: 1px solid;
+    color: #000;
+  }
