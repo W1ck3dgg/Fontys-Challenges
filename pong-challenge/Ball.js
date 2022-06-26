@@ -1,3 +1,4 @@
+//Starting speed of the ball and increasing speed overtime.
 const INITIAL_VELOCITY = 0.025
 const VELOCITY_INCREASE = 0.000001
 
@@ -6,11 +7,11 @@ export default class Ball {
     this.ballElem = ballElem
     this.reset()
   }
-
+//gets(get x) value from css and converts it to js usable value.
   get x() {
     return parseFloat(getComputedStyle(this.ballElem).getPropertyValue("--x"))
   }
-
+//seters and getters run first and determine the position of the ball based on x value in this case 50.
   set x(value) {
     this.ballElem.style.setProperty("--x", value)
   }
@@ -41,6 +42,7 @@ export default class Ball {
     this.velocity = INITIAL_VELOCITY
   }
 
+  //updates ball velocity with each iteration.
   update(delta, paddleRects) {
     this.x += this.direction.x * this.velocity * delta
     this.y += this.direction.y * this.velocity * delta
@@ -57,6 +59,7 @@ export default class Ball {
   }
 }
 
+//makes the ball go on a random direction everytime the game starts.
 function randomNumberBetween(min, max) {
   return Math.random() * (max - min) + min
 }
