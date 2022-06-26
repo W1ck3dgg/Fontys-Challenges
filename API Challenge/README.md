@@ -1,2 +1,0 @@
-# API CHALLENGE
-## Based on the feedback I got on canvas, I used an API that had already everything provided, with this update I have comented and updated this challenge. Now you can fetch data based on what you choose!
